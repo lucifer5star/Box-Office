@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
-
+import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import Home from './pages/Home';
+import Starred from './pages/Starred';
+import MainLayout from './components/MainLayout';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+       <Routes>
+        <Route  element={<MainLayout/>}>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/starred" element={<Starred/>}/>
+          </Route>
+          <Route path="*" element={<div>Not Found</div>}/>
+          {/* <Route path="teams" element={<Teams/>}>
+          <Route path="teamID" element={<Team/>}/>
+          <Route path="new" element={<NewTeamForm/>}/>
+            <Route index element={<LeagueStandings/>}/>
+          </Route> */}
+        {/* </Route> */}
+        {/* <Route element={<PageLayout/>}>
+          <Route path='/privacy' element={<Privacy/>}/>
+          <Route path='/tos' element={<Tos/>}/>
+        </Route>
+        <Route path='contact-us' element={<Contact/>}/> */}
+       </Routes>
+    </BrowserRouter>
   );
 }
 
